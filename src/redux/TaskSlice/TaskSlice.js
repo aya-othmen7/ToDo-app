@@ -28,13 +28,13 @@ export const taskSlice = createSlice({
   name: "task",
   initialState,
   reducers: {
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    addTask: (state, action) => {
+      state.tasklist.push(action.payload);      
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-// export const { incrementByAmount } = counterSlice.actions;
+export const { addTask} = taskSlice.actions;
 
 export default taskSlice.reducer;
