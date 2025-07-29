@@ -38,7 +38,7 @@ A simple and stylish To-Do List application built with **React**, **Redux Toolki
 
 2. **Install dependencies**
    ```bash
-  npm install
+   npm install
 
 3. **Start the development server**
 
