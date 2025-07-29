@@ -10,7 +10,7 @@ const Task = ({ task }) => {
         <h2>{task.title}</h2>
         <p>{task.description}</p>
         <span>{task.isDone ? "Done" : "Not Done"}</span>
-        <buttton onClick={()=>dispatch(deleteTask({id: task.id}))}>elete</buttton>
+        <buttton onClick={()=>dispatch(deleteTask({id: task.id}))}>Delete</buttton>
       </div>
     </div>
   );
