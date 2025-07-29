@@ -17,7 +17,10 @@ A simple and stylish To-Do List application built with **React**, **Redux Toolki
 - 💄 Clean and responsive UI with React-Bootstrap
 
 ---
+## 🖼️ Screenshot
+![Task List View](./public/image.png)
 
+---
 ## 🧰 Tech Stack
 
 - [React.js](https://reactjs.org/)
@@ -38,7 +41,7 @@ A simple and stylish To-Do List application built with **React**, **Redux Toolki
 
 2. **Install dependencies**
    ```bash
-  npm install
+   npm install
 
 3. **Start the development server**
 
