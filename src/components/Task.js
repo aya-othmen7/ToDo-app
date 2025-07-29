@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteTask } from "../redux/TaskSlice/TaskSlice";
+import { deleteTask, doneTask } from "../redux/TaskSlice/TaskSlice";
+import EditTask from "./EditTask";
 
 const Task = ({ task }) => {
   const dispatch=useDispatch();
@@ -9,8 +10,9 @@ const Task = ({ task }) => {
       <div className="text">
         <h2>{task.title}</h2>
         <p>{task.description}</p>
-        <span>{task.isDone ? "Done" : "Not Done"}</span>
-        <buttton onClick={()=>dispatch(deleteTask({id: task.id}))}>Delete</buttton>
+        <span onClick={()=>dispatch(doneTask({id: task.id}))}>{task.isDone ? "Done" : "Not Done"}</span>
+        <button onClick={()=>dispatch(deleteTask({id: task.id}))}>Delete</button>
+        <EditTask id ={task.id}/>
       </div>
     </div>
   );
