@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1rem;
 }
 
 .App-logo {
@@ -21,4 +23,28 @@
   justify-content: center;
   align-items: center;
   color: white;
+}
+
+.todo-list {
+width: 70%;
+margin: 0 auto;
+margin-top: 20px;
+}
+.todo-item {
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1.1em;
+border-radius: 8px;
+box-shadow: -1px 0px 5px 4px rgba(212, 212, 212, 0.5);
+margin-top: 10px;
+}
+
+.done {
+background-color: rgb(184, 235, 184);
+}
+
+.undone {
+background-color: rgb(250, 164, 164);
 }

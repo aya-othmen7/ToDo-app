@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import { Navbar, Container } from "react-bootstrap";
 
-function Header() {
+const Header = () => {
   return (
-    <div className='app-header'>Header</div>
-  )
-}
+    <Navbar bg="dark" variant="dark" expand="lg" className="mb-4">
+      <Container>
+        <Navbar.Brand className="mx-auto fw-bold">
+          📝 To-Do App with Redux Toolkit
+        </Navbar.Brand>
+      </Container>
+    </Navbar>
+  );
+};
 
-export default Header
+export default Header;

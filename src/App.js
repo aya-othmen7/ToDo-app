@@ -1,11 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/Header";
+import ListTask from "./components/ListTask";
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
+    <div className="App bg-light min-vh-100">
+      <Header />
+      <ListTask />
     </div>
   );
 }

@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { Form } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import { Form, Button, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { editTasks } from "../redux/TaskSlice/TaskSlice";
+import { FaEdit } from "react-icons/fa";
 
 const EditTask = ({ id }) => {
   const dispatch = useDispatch();
-  const [taskToEdit, editTask] = useState({
+  const [editedTask, setEditedTask] = useState({
     title: "",
     description: "",
   });
@@ -16,52 +15,56 @@ const EditTask = ({ id }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const handleEdit = () => {
+    if (editedTask.title.trim() === "" || editedTask.description.trim() === "") return;
+    dispatch(editTasks({ id, taskToEdit: editedTask }));
+    handleClose();
+  };
+
   return (
-    <div>
-      <Button variant="primary" onClick={handleShow}>
-        Edit Task
+    <>
+      <Button variant="outline-primary" size="sm" onClick={handleShow}>
+        <FaEdit /> Edit
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header></Modal.Header>
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Task</Modal.Title>
+        </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="formBasicTitle">
+            <Form.Group controlId="formBasicTitle" className="mb-3">
+              <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter task title"
-                onChange={(e) => {
-                  editTask({ ...taskToEdit, title: e.target.value });
-                }}
+                value={editedTask.title}
+                onChange={(e) => setEditedTask({ ...editedTask, title: e.target.value })}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicDescription">
+
+            <Form.Group controlId="formBasicDescription">
+              <Form.Label>Description</Form.Label>
               <Form.Control
-                type="text"
+                as="textarea"
+                rows={3}
                 placeholder="Enter task description"
-                onChange={(e) => {
-                  editTask({ ...taskToEdit, description: e.target.value });
-                }}
+                value={editedTask.description}
+                onChange={(e) => setEditedTask({ ...editedTask, description: e.target.value })}
               />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Cancel
           </Button>
-          <Button
-            variant="primary"
-            onClick={() => {
-              handleClose();
-              dispatch(editTasks({ id: id, taskToEdit }))
-            }}
-          >
-            Edit Task
+          <Button variant="primary" onClick={handleEdit}>
+            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 };
 
